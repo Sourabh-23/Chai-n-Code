@@ -61,15 +61,96 @@ const myFunc = function() {
     console.log("Hello World");
 }
 
-console.log(typeof score); // Output: number
-console.log(typeof scorevalue); // Output: string
-console.log(typeof isPassed); // Output: boolean
-console.log(typeof student); // Output: object
-console.log(typeof noValue); // Output: undefined
-console.log(typeof bigInt); // Output: bigint
-console.log(typeof uniqueSymbol); // Output: symbol
-console.log(typeof id); // Output: symbol
-console.log(typeof anotherId); // Output: symbol
-console.log(typeof heros); // Output: object
-console.log(typeof myObj); // Output: object
-console.log(typeof myFunc); // Output: function
+// console.log(typeof score); // Output: number
+// console.log(typeof scorevalue); // Output: string
+// console.log(typeof isPassed); // Output: boolean
+// console.log(typeof student); // Output: object
+// console.log(typeof noValue); // Output: undefined
+// console.log(typeof bigInt); // Output: bigint
+// console.log(typeof uniqueSymbol); // Output: symbol
+// console.log(typeof id); // Output: symbol
+// console.log(typeof anotherId); // Output: symbol
+// console.log(typeof heros); // Output: object
+// console.log(typeof myObj); // Output: object
+// console.log(typeof myFunc); // Output: function
+
+
+
+// MEMORY
+
+// Stack Memory = used for storing primitive data types and function references.
+// Heap Memory = used for storing non-primitive data types.
+
+// Primitive data types are stored in the stack memory, while non-primitive data types are stored in the heap memory.
+
+let myYoutubeName = "Sourabh";
+let anotherYoutubeName = myYoutubeName;
+
+console.log(myYoutubeName);
+console.log(anotherYoutubeName);
+
+let userOne = {
+    name: "Sourabh",
+    age: 22
+};
+
+let userTwo = userOne;
+
+userTwo.name = "Sourabh Kumar";
+
+console.log(userOne.name);
+console.log(userTwo.name);
+
+
+
+
+// Part 1 — Strings (Primitive) → STACK
+// jslet myYoutubeName = "Sourabh";
+// let anotherYoutubeName = myYoutubeName;
+// What happens in Stack memory:
+// STACK
+// ┌─────────────────────────────┐
+// │ myYoutubeName    = "Sourabh"│  ← original
+// │ anotherYoutubeName= "Sourabh"│  ← COPY created
+// └─────────────────────────────┘
+// ✅ Two separate boxes in stack
+// ✅ Changing one does NOT affect the other
+// ✅ Primitives (string, number, boolean) always get copied by value
+
+// Part 2 — Objects (Non-Primitive) → HEAP
+// jslet userOne = { name: "Sourabh", age: 22 };
+// let userTwo = userOne;
+// userTwo.name = "Sourabh Kumar";
+// What happens in Heap memory:
+// STACK                    HEAP
+// ┌──────────────┐         ┌─────────────────────┐
+// │ userOne  ●───┼────────▶│ name: "Sourabh Kumar"│
+// │ userTwo  ●───┼────────▶│ age: 22              │
+// └──────────────┘         └─────────────────────┘
+//      both point to          ONE object in heap
+//      same address!
+// ❌ NOT two separate objects
+// ❌ Both variables point to same memory address in heap
+// ❌ So changing userTwo.name also changes userOne.name!
+
+// Output Explained
+// js// Part 1 - Strings
+// console.log(myYoutubeName);     // "Sourabh"        ✅ unchanged
+// console.log(anotherYoutubeName);// "Sourabh"        ✅ unchanged
+
+// // Part 2 - Objects
+// console.log(userOne.name); // "Sourabh Kumar"  😱 changed!
+// console.log(userTwo.name); // "Sourabh Kumar"  ✅ changed
+
+// Golden Rule
+// Primitive  → Stack → Copy by VALUE   → Independent ✅
+// Object     → Heap  → Copy by REFERENCE → Same object ⚠️
+
+// How to fix object problem? — Spread operator
+// jslet userTwo = { ...userOne }; // creates NEW copy in heap
+// userTwo.name = "Sourabh Kumar";
+
+// console.log(userOne.name); // "Sourabh"       ✅ safe!
+// console.log(userTwo.name); // "Sourabh Kumar" ✅
+
+// 💡 This is why in your Node.js backend you always use spread {...obj} or Object.assign() when copying objects — to avoid accidentally modifying original data! You were already doing this without knowing the theory 😄🎯
