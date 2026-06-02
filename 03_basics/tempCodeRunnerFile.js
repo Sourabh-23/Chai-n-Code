@@ -1,96 +1,38 @@
 
-// Scope kya hota hai?
-// Scope matlab — variable kahan accessible hai aur kahan nahi.
+// RETURN VALUE
+// return ka matlab: function result wapas dega, jise variable me store kar sakte ho.
 
-// 3 Types of Scope
+function addTwoNumbers(num1, num2) {
+    let result = num1 + num2; // pehle result variable me answer store kiya
+    return result;            // answer function ke bahar bheja
+}
 
-// 1. Global Scope
-// jsconst name = "Sourabh"; // Global — sab jagah accessible
+function addTwoNumbers(num1, num2) {
+    return num1 + num2; // short way: direct answer return kiya
+}
+const result = addTwoNumbers(3, 4); // returned value result me store hui
+console.log(result);                // output: 7
 
-// function one() {
-//     console.log(name); // ✅ Works
-// }
 
-// function two() {
-//     console.log(name); // ✅ Works
-// }
-// Global variable — kisi bhi function mein access ho sakta hai.
+// USER LOGIN MESSAGE
 
-// 2. Function Scope
-// jsfunction one() {
-//     const username = "bunty"; // Sirf one() ke andar
-// }
+function loginUserMessage(username) {       // username function ka input hai
+    if (username === undefined) {           // agar koi argument pass nahi hua
+        return "No username provided";      // yahan return ke baad function ruk jata hai
+    }
 
-// console.log(username); // ❌ Error — bahar accessible nahi
-// Function ke andar ka variable — sirf usi function mein accessible hota hai.
+    return `${username} has logged in`;     // template literal se dynamic message banta hai
+}
 
-// 3. Block Scope
-// jsif (true) {
-//     let x = 10;     // ✅ let/const block scope
-//     var y = 20;     // ⚠️ var block scope nahi maanta
-// }
+console.log(loginUserMessage());            // output: No username provided
+console.log(loginUserMessage("Sourabh"));   // output: Sourabh has logged in
 
-// console.log(x); // ❌ Error
-// console.log(y); // ✅ Works — var ka yahi problem hai
 
-// Lexical Scope — Main Concept
-// Lexical matlab — jahan likha hai code, wahi decide hota hai scope.
-// jsfunction one() {              // PARENT
-//     const username = "bunty";
-    
-//     function two() {          // CHILD
-//         const website = "youtube";
-        
-//         function three() {    // CHILD ka CHILD (grandchild)
-//             const age = 25;
-            
-//             console.log(username); // ✅ Works - dada ka variable
-//             console.log(website);  // ✅ Works - baap ka variable
-//             console.log(age);      // ✅ Works - apna variable
-//         }
-        
-//         console.log(username); // ✅ Works - parent ka variable
-//         console.log(website);  // ✅ Works - apna variable
-//         console.log(age);      // ❌ Error - child ka variable
-//     }
-    
-//     console.log(username); // ✅ Works - apna variable
-//     console.log(website);  // ❌ Error - child ka variable
-//     console.log(age);      // ❌ Error - grandchild ka variable
-// }
+// REST OPERATOR (...)
+// Jab pata nahi kitne arguments aayenge, rest operator sabko array me pack karta hai.
 
-// Scope Chain
-// Jab variable dhundta hai JavaScript — upar ki taraf jaata hai:
-// three() → two() → one() → Global
-// jsconst city = "Kolhapur"; // Global
+function calculateCartPrice(...prices) { // ...prices all arguments ko array bana deta hai
+    return prices;                       // array return hoga
+}
 
-// function one() {
-//     const name = "Sourabh";
-    
-//     function two() {
-//         const skill = "Node.js";
-        
-//         // JavaScript dhundhta hai:
-//         // skill → two() mein mila ✅
-//         // name → two() mein nahi → one() mein mila ✅  
-//         // city → two() mein nahi → one() mein nahi → Global mein mila ✅
-        
-//         console.log(skill); // ✅
-//         console.log(name);  // ✅
-//         console.log(city);  // ✅
-//     }
-// }
-// Upar jaata hai — neeche kabhi nahi.
-
-// var vs let vs const — Scope Difference
-// jsfunction test() {
-//     if (true) {
-//         var a = 10;   // Function scope
-//         let b = 20;   // Block scope
-//         const c = 30; // Block scope
-//     }
-    
-//     console.log(a); // ✅ 10 — var function scope
-//     console.log(b); // ❌ Error — let block scope
-//     console.log(c); // ❌ Error — const block scope
-// }
+console.log(calculateCartPrice(100, 200, 400)); // output: [100, 200, 400]

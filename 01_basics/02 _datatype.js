@@ -1,32 +1,30 @@
-"use strict"; // treat all JS code as newer version
+"use strict"; // modern JavaScript rules use karta hai; mistakes ko jaldi catch karta hai
 
-//alert(3+3); // 6
-// we are using node js not browser so alert is not defined
+// alert(3 + 3); // browser me chalega, Node.js me nahi; Node me alert defined nahi hota
 
-console.log(3+3); // 6
+console.log(3 + 3);        // output: 6, numbers add hote hain
+console.log("Hello World"); // output: Hello World, string print hoti hai
 
-console.log("Hello World");
+let name = "John Doe";     // string datatype: text value
+let age = 23;              // number datatype: integer/decimal dono number hi hote hain
+let isLoggedIn = false;    // boolean datatype: true ya false
 
-let name = "John Doe";
+// Primitive datatypes:
+// number    -> normal numeric values, safe range approx 2^53 tak
+// bigint    -> bahut bade numbers ke liye
+// string    -> text, " ", ' ', ya ` ` me likhte hain
+// boolean   -> true / false
+// null      -> intentionally empty value
+// undefined -> value abhi assign nahi hui
+// symbol    -> unique identifier banane ke liye
 
-let age = 23;
+console.log("type of name =", typeof name);             // string
+console.log("type of age =", typeof age);               // number
+console.log("type of isLoggedIn =", typeof isLoggedIn); // boolean
+console.log("type of null =", typeof null);             // object, ye JavaScript ka old bug hai
+console.log("type of undefined =", typeof undefined);   // undefined
 
-let isLoggedIn = false;
+const id = Symbol("id");          // har Symbol unique hota hai
+const anotherId = Symbol("id");   // same description hone ke baad bhi alag value hai
 
-// Primitives => number, bigint, string, boolean, null, undefined, symbol
-
-// number => 2 to power 53
-// bigint => more than 2 to power 53
-//string => " ", ' ', ` `
-//boolean => true or false
-//null => standalone value
-//undefined => undefined
-//symbol => unique identifier
-
-console.log("type of name =",typeof name);
-console.log("type of age =",typeof age);
-console.log("type of isLoggedIn =",typeof isLoggedIn);
-console.log("type of null =",typeof null);
-console.log("type of undefined =",typeof undefined);
-
-// symbol => unique identifier
+console.log(id === anotherId);    // false, kyunki dono symbols unique hain
