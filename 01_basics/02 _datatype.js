@@ -1,9 +1,12 @@
 "use strict"; // modern JavaScript rules use karta hai; mistakes ko jaldi catch karta hai
 
+const section = (title) => console.log(`\n--- ${title} ---`);
+
 // alert(3 + 3); // browser me chalega, Node.js me nahi; Node me alert defined nahi hota
 
-console.log(3 + 3);        // output: 6, numbers add hote hain
-console.log("Hello World"); // output: Hello World, string print hoti hai
+section("1. Basic console output");
+console.log("3 + 3 =", 3 + 3);        // output: 6, numbers add hote hain
+console.log("message =", "Hello World"); // output: Hello World, string print hoti hai
 
 let name = "John Doe";     // string datatype: text value
 let age = 23;              // number datatype: integer/decimal dono number hi hote hain
@@ -18,13 +21,15 @@ let isLoggedIn = false;    // boolean datatype: true ya false
 // undefined -> value abhi assign nahi hui
 // symbol    -> unique identifier banane ke liye
 
+section("2. typeof primitive values");
 console.log("type of name =", typeof name);             // string
 console.log("type of age =", typeof age);               // number
 console.log("type of isLoggedIn =", typeof isLoggedIn); // boolean
 console.log("type of null =", typeof null);             // object, ye JavaScript ka old bug hai
 console.log("type of undefined =", typeof undefined);   // undefined
 
+section("3. Symbol uniqueness");
 const id = Symbol("id");          // har Symbol unique hota hai
 const anotherId = Symbol("id");   // same description hone ke baad bhi alag value hai
 
-console.log(id === anotherId);    // false, kyunki dono symbols unique hain
+console.log("id === anotherId =", id === anotherId);    // false, kyunki dono symbols unique hain

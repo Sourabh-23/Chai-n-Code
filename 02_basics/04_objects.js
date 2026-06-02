@@ -4,8 +4,10 @@
 // it is often used to store configuration settings or to group related data together   
 
 const tinderUser =  new Object(); // creating an empty object using the Object constructor
+const section = (title) => console.log(`\n--- ${title} ---`);
 
-console.log(tinderUser); // {} empty object
+section("1. Empty singleton object");
+console.log("tinderUser =", tinderUser); // {} empty object
 
 tinderUser.id= "1234567890"; // adding properties to the object
 tinderUser.name= "Sourabh";
@@ -37,11 +39,13 @@ key4: "value4",
 }                                                   
 
 const obj3 ={obj1, obj2}; // this will create a new object with obj1 and obj2 as properties
-console.log(obj3); // {obj1: {key1: "value1", key2: "value2"},
+section("2. Object inside object");
+console.log("obj3 =", obj3); // {obj1: {key1: "value1", key2: "value2"},
 // 
 
 const obj4 = Object.assign({}, obj1, obj2); // this will create a new object with the properties of obj1 and obj2
-console.log(obj4); // {key1: "value1", key2: "value2", key3: "value3", key4: "value4"}
+section("3. Combine object properties");
+console.log("obj4 =", obj4); // {key1: "value1", key2: "value2", key3: "value3", key4: "value4"}
 
 const users = [
     {
@@ -96,13 +100,15 @@ const users = [
         lastLoginDays: ["Wednesday", "Sunday"],
         lastLoginTimes: [7, 3],
     },
-];``
+];
 
-console.log(users); 
+section("4. Array of user objects");
+console.log("users =", users); 
 
-console.log(users[0].fullName.firstName);
-console.log(users[0].fullName.lastName);
-console.log(users[2].fullName.userFullName);
+section("5. Access nested object values");
+console.log("users[0].fullName.firstName =", users[0].fullName.firstName);
+console.log("users[0].fullName.lastName =", users[0].fullName.lastName);
+console.log("users[2].fullName.userFullName =", users[2].fullName.userFullName);
 
 
 // destructuring objects
@@ -114,9 +120,10 @@ courseLevel: "Beginner",
 };  
 
 const {courseName, courseDuration, courseLevel} = course; // destructuring the course object
-console.log(courseName); // JavaScript
-console.log(courseDuration); // 3 months
-console.log(courseLevel); // Beginner
+section("6. Course destructuring");
+console.log("courseName =", courseName); // JavaScript
+console.log("courseDuration =", courseDuration); // 3 months
+console.log("courseLevel =", courseLevel); // Beginner
 
 
 const navbar = {
@@ -126,9 +133,10 @@ logo: "logo.png",
 };
 
 const {brand, links, logo} = navbar; // destructuring the navbar object
-console.log(brand); // My Website
-console.log(links); // ["Home", "About", "Contact"]
-console.log(logo); // logo.png
+section("7. Navbar destructuring");
+console.log("brand =", brand); // My Website
+console.log("links =", links); // ["Home", "About", "Contact"]
+console.log("logo =", logo); // logo.png
 
 // json objects
 // json stands for JavaScript Object Notation

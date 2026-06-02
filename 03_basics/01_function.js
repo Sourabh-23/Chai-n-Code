@@ -16,7 +16,8 @@ function printHello() { // function declaration: printHello naam ka function ban
     console.log("o");
 }
 
- //printHello;  // sirf reference hai: function ko point karta hai, execute nahi karta
+// printHello;  // sirf reference hai: function ko point karta hai, execute nahi karta
+console.log("\n--- 1. printHello function ---"); // terminal me section name dikhane ke liye
 printHello(); // call hai: () lagane se function execute hota hai
 
 
@@ -24,26 +25,40 @@ printHello(); // call hai: () lagane se function execute hota hai
 // parameters = function banate waqt variables
 // arguments = function call karte waqt actual values
 
-function addTwoNumbers(num1, num2) { // num1, num2 parameters hain
-    console.log("===================================>",num1 + num2);        // sirf print karega, value return nahi karega
+function addTwoNumbersPrint(num1, num2) { // num1, num2 parameters hain
+    console.log("answer =", num1 + num2); // sirf print karega, value return nahi karega
 }
-addTwoNumbers(3, 4);    // 3 and 4 arguments hain, output: 7
-addTwoNumbers(10, null); // null number context me 0 ban jata hai, output: 10
+
+console.log("\n--- 2. addTwoNumbers: direct console.log inside function ---");
+addTwoNumbersPrint(3, 4);    // 3 and 4 arguments hain, output: 7
+addTwoNumbersPrint(10, null); // null number context me 0 ban jata hai, output: 10
 
 
 // RETURN VALUE
 // return ka matlab: function result wapas dega, jise variable me store kar sakte ho.
+// Neeche wale dono functions same answer dete hain.
+// Difference sirf style ka hai:
+// 1. Long way: pehle variable me store karo, phir return karo.
+// 2. Short way: direct calculation return karo.
 
-function addTwoNumbers(num1, num2) {
+function addTwoNumbersLongWay(num1, num2) {
     let result = num1 + num2; // pehle result variable me answer store kiya
     return result;            // answer function ke bahar bheja
+    // console.log("This will never run"); // return ke baad code execute nahi hota
 }
 
-function addTwoNumbers(num1, num2) {
+function addTwoNumbersReturn(num1, num2) {
     return num1 + num2; // short way: direct answer return kiya
 }
-const result = addTwoNumbers(3, 4); // returned value result me store hui
-console.log(result);                // output: 7
+
+const longWayResult = addTwoNumbersLongWay(3, 4); // long way function ka returned value
+const shortWayResult = addTwoNumbersReturn(3, 4); // short way function ka returned value
+
+console.log("\n--- 3A. addTwoNumbersLongWay: variable me store karke return ---");
+console.log("longWayResult =", longWayResult); // output: 7
+
+console.log("\n--- 3B. addTwoNumbersReturn: direct return ---");
+console.log("shortWayResult =", shortWayResult); // output: 7
 
 
 // USER LOGIN MESSAGE
@@ -56,8 +71,9 @@ function loginUserMessage(username) {       // username function ka input hai
     return `${username} has logged in`;     // template literal se dynamic message banta hai
 }
 
-console.log(loginUserMessage());            // output: No username provided
-console.log(loginUserMessage("Sourabh"));   // output: Sourabh has logged in
+console.log("\n--- 4. loginUserMessage function ---");
+console.log("without username =", loginUserMessage());          // output: No username provided
+console.log("with username =", loginUserMessage("Sourabh"));    // output: Sourabh has logged in
 
 
 // REST OPERATOR (...)
@@ -67,4 +83,28 @@ function calculateCartPrice(...prices) { // ...prices all arguments ko array ban
     return prices;                       // array return hoga
 }
 
-console.log(calculateCartPrice(100, 200, 400)); // output: [100, 200, 400]
+console.log("\n--- 5. calculateCartPrice with rest operator ---");
+console.log("cart prices =", calculateCartPrice(100, 200, 400)); // output: [100, 200, 400]
+
+
+
+
+
+function addthreeNumbers(num1, num2, num3) {
+    return num1,num2,num3;
+}
+console.log("\n--- 6. addthreeNumbers function ---");
+console.log(addthreeNumbers(1,2,3));
+
+
+
+function loginpersonusername(username) {
+    if (username === undefined) {
+        return "No username provided";
+    }   
+    return `${username} has logged in`;
+}
+console.log("\n--- 7. loginpersonusername function ---");
+console.log(loginpersonusername());    
+
+  

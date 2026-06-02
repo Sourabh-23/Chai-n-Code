@@ -1,94 +1,75 @@
-// var c=1000;
+// SCOPE PRACTICE
+// Scope = variable kahan accessible hai aur kahan nahi.
 
-let a =300;
+const section = (title) => console.log(`\n--- ${title} ---`);
 
-if (true)
-{
-let a=10;
-const b=20;
-// var c=30;
-//console.log("inner",a); //10   
+let a = 300; // global/file scope
+
+if (true) {
+    let a = 10;       // block scope: sirf is if block ke andar
+    const b = 20;    // block scope
+    // var c = 30;   // var avoid karo, block scope follow nahi karta
+
+    section("1. Block scope");
+    console.log("inner a =", a); // output: 10
+    console.log("b =", b);       // output: 20
 }
 
+section("2. Outside block");
+console.log("outer a =", a);     // output: 300
+// console.log(b);               // error: b block ke bahar accessible nahi
 
 
+function one() {
+    const username = "bunty";
 
-
-
-
-//console.log(a);
-//console.log(b); //error
-//console.log(c); 
-
-
-
-function one(){
-    const username="bunty";
-    function two(){
-        const website="youtube";
-        console.log(username);
+    function two() {
+        const website = "youtube";
+        console.log("username from parent function =", username);
+        console.log("website inside child function =", website);
     }
-    //console.log(website);
+
+    // console.log(website);     // error: parent child ka variable access nahi kar sakta
     two();
 }
+
+section("3. Function scope");
 one();
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-if (true)
-{
+if (true) {
     const username = "pailwan";
-    if(username === "pailwan"){
-        const website="youtube";
-        console.log(username);
-    }
-    //console.log(website); 
 
+    if (username === "pailwan") {
+        const website = "youtube";
+
+        section("4. Nested block scope");
+        console.log("username from parent block =", username);
+        console.log("website inside child block =", website);
+    }
+
+    // console.log(website);     // error: website child block ke bahar accessible nahi
 }
 
 
+// HOISTING EXAMPLE
 
-// +++++++++++ interesting example ++++++++++++++++
+section("5. Function declaration hoisting");
+console.log("addone(5) =", addone(5)); // output: 6
 
-
-console.log(addone(5)); //6
-function addone(num)
-    {
-return num+1;
-    }
-    addone(5); //6
-
-    const addtwo = function(num)
-    {
-        return num+2;
-    }
-    addtwo(5); //7
-
-    //JS pehle poora code scan karta hai
-//function ko upar le jaata hai (hoist)
-//Isliye pehle call karo ya baad mein — koi fark nahi
+function addone(num) {
+    return num + 1;
+}
 
 
+section("6. Function expression");
 
-// Function Expression ❌
-// javascriptconsole.log(addtwo(5)); // ❌ Error! Cannot access before initialization
+const addtwo = function (num) {
+    return num + 2;
+};
 
-// const addtwo = function(num) {
-//     return num + 2;
-// }
-// Kyun error aaya?
+console.log("addtwo(5) =", addtwo(5)); // output: 7
 
-// const hoist nahi hoti
-// Pehle define karo, tabhi call kar sakte ho
+// Function declaration: pehle call kar sakte ho.
+// Function expression: pehle define karo, phir call karo.
+// console.log(addtwo(5)); // agar definition se pehle likha to error aayega.

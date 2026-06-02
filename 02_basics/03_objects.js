@@ -16,6 +16,7 @@
 // example of an object literal
 
 let symbol = "z4asfbiwhufbwjb6o";
+const section = (title) => console.log(`\n--- ${title} ---`);
 
 const person = {
 name: "John",
@@ -27,15 +28,17 @@ isloggedIn: true,
 lastlogindays: ["Monday", "Tuesday", "Wednesday"],
 };
 
-console.log(person);
-console.log(person.name); // accessing a property using dot notation
-console.log(person["age"]); // accessing a property using bracket notation
+section("1. Object and property access");
+console.log("person =", person);
+console.log("person.name =", person.name); // accessing a property using dot notation
+console.log("person['age'] =", person["age"]); // accessing a property using bracket notation
 //console.log(person.full name); // this will cause an error because the key has a space in it
-console.log(person["full name"]); // this is the correct way to access a property with a space in the key
-console.log(typeof person["full name"]); // object
+console.log("person['full name'] =", person["full name"]); // this is the correct way to access a property with a space in the key
+console.log("typeof person['full name'] =", typeof person["full name"]); // string
 
 person.email="sourabhhowale@gmailcom"; // updating a property
-console.log(person.email); // accessing the updated property
+section("2. Updated property");
+console.log("person.email =", person.email); // accessing the updated property
 
 // in depth understanding of objects
 // objects are reference types
@@ -44,15 +47,18 @@ console.log(person.email); // accessing the updated property
 // this means that if we change the copied object, we are also changing the original object
 let person2 = person; // copying the reference to the person object
 person2.name = "Jane"; // changing the name property of person2
-console.log(person.name); // this will also change the name property of person because person2 is a reference to the same object in memory
+section("3. Reference copy changes original");
+console.log("person.name after person2 change =", person.name); // this will also change the name property of person because person2 is a reference to the same object in memory
 
 // to fix this, we need to create a new object
 let person3 = {...person}; // copying the object using spread operator
 person3.name = "John"; // changing the name property of person3
-console.log(person.name); // this will not change the name property of person because person3 is a new object
+section("4. Spread copy keeps original safe");
+console.log("person.name after person3 change =", person.name); // this will not change the name property of person because person3 is a new object
 
 // to fix this, we need to create a new object
 let person4 = Object.assign({}, person); // copying the object using Object.assign()
 person4.name = "John"; // changing the name property of person4
-console.log(person.name); // this will not change the name property of person because person4 is a new object
+section("5. Object.assign copy keeps original safe");
+console.log("person.name after person4 change =", person.name); // this will not change the name property of person because person4 is a new object
 

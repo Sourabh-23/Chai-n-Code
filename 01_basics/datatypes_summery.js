@@ -1,4 +1,5 @@
 // primitive data types
+const section = (title) => console.log(`\n--- ${title} ---`);
 
 // 7 primitive data types in JavaScript
 // 1. String =  "Hello World", 'Hello World', `Hello World`
@@ -40,7 +41,8 @@ const uniqueSymbol = Symbol("id");
 const id = Symbol("123");
 const anotherId = Symbol("123");
 
-console.log("id =========>",id === anotherId); // Output: false
+section("1. Symbol comparison");
+console.log("id === anotherId =",id === anotherId); // Output: false
 
 // Reference (non-primitive) data types
 
@@ -58,7 +60,7 @@ let myObj = {
 // varibale way to declare function
 
 const myFunc = function() {
-    console.log("Hello World");
+    console.log("inside myFunc =", "Hello World");
 }
 
 // console.log(typeof score); // Output: number
@@ -86,8 +88,9 @@ const myFunc = function() {
 let myYoutubeName = "Sourabh";
 let anotherYoutubeName = myYoutubeName;
 
-console.log(myYoutubeName);
-console.log(anotherYoutubeName);
+section("2. Stack memory: primitive copy");
+console.log("myYoutubeName =", myYoutubeName);
+console.log("anotherYoutubeName =", anotherYoutubeName);
 
 let userOne = {
     name: "Sourabh",
@@ -98,8 +101,9 @@ let userTwo = userOne;
 
 userTwo.name = "Sourabh Kumar";
 
-console.log(userOne.name);
-console.log(userTwo.name);
+section("3. Heap memory: object reference");
+console.log("userOne.name =", userOne.name);
+console.log("userTwo.name =", userTwo.name);
 
 
 

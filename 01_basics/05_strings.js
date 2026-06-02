@@ -1,23 +1,28 @@
 const username = "Sourabh";
 const projectCount = 50;
+const section = (title) => console.log(`\n--- ${title} ---`);
 
 // Template literal
-console.log(`My name is ${username.toUpperCase()} and I have ${projectCount} github repos`);
+section("1. Template literal");
+console.log("intro =", `My name is ${username.toUpperCase()} and I have ${projectCount} github repos`);
 
 // String object
 const techStack = new String("Node Express");
-console.log(techStack);
-console.log(techStack.length);
-console.log(techStack[0]);
-console.log(techStack.toUpperCase());
-console.log(techStack.__proto__);
+section("2. String object basics");
+console.log("techStack =", techStack);
+console.log("length =", techStack.length);
+console.log("first character =", techStack[0]);
+console.log("uppercase =", techStack.toUpperCase());
+console.log("prototype =", techStack.__proto__);
 
 // undefined check
-console.log(username.projectCount);
+section("3. Property that does not exist");
+console.log("username.projectCount =", username.projectCount);
 
 // charAt and indexOf
-console.log(techStack.charAt(2));
-console.log(techStack.indexOf('E'));
+section("4. charAt and indexOf");
+console.log("charAt(2) =", techStack.charAt(2));
+console.log("indexOf('E') =", techStack.indexOf('E'));
 
 // replace
 const game = "Call of Duty";
@@ -26,4 +31,5 @@ const game = "Call of Duty";
 const updatedGame = game.replace(/Duty/g, "Warzone");
 
 
-console.log(updatedGame.split(' '));
+section("5. replace and split");
+console.log("updatedGame words =", updatedGame.split(' '));

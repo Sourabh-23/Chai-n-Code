@@ -1,3 +1,5 @@
+const section = (title) => console.log(`\n--- ${title} ---`);
+
 const accountId = 12345;
 //rules for constant variable
 //1. Must be assigned
@@ -28,9 +30,11 @@ let accountstate;
 accountEmail = "B6m0X@example.com";
 accountPassword = "anotherSecretPassword";
 
-console.log(accountId);
-console.log(accountEmail);
-console.log(accountPassword);
-console.log(accountCity);
+section("1. Variables one by one");
+console.log("accountId =", accountId);
+console.log("accountEmail =", accountEmail);
+console.log("accountPassword =", accountPassword);
+console.log("accountCity =", accountCity);
 
+section("2. Variables in table");
 console.table({accountId, accountEmail, accountPassword, accountCity,accountstate}); 
