@@ -17,8 +17,29 @@ if (true) {
 
 section("2. Outside block");
 console.log("outer a =", a);     // output: 300
-// console.log(b);               // error: b block ke bahar accessible nahi
+ // console.log(b);               // error: b block ke bahar accessible nahi
+// console.log("c =", c);           // error: c block ke bahar accessible nahi
 
+
+
+
+
+
+
+
+
+
+
+
+// nested function scope
+// ek function ke andar dusra function, dono ke apne variables,
+// parent function ke variables lekin child function parent ke variables access kar sakta hai.
+
+
+// Q. nested and closure function kya hai? closure kaise banta hai? scope ke sath kya relation hai?'
+// ans: nested function = ek function ke andar dusra function, 
+// closure = jab inner function apne parent function ke variables ko access karta hai,
+// nested scope = variable kahan accessible hai.
 
 function one() {
     const username = "bunty";
@@ -37,6 +58,10 @@ section("3. Function scope");
 one();
 
 
+
+
+
+
 if (true) {
     const username = "pailwan";
 
@@ -50,6 +75,23 @@ if (true) {
 
     // console.log(website);     // error: website child block ke bahar accessible nahi
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // HOISTING EXAMPLE
