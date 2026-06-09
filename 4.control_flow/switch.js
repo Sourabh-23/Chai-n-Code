@@ -1,0 +1,43 @@
+// switch 
+
+// switch (expression) {
+//     case value1:
+//         // code to be executed if expression === value1
+//         break;
+//     case value2:
+//         // code to be executed if expression === value2
+//         break;
+//     // more cases...
+//     default:
+//         // code to be executed if expression doesn't match any case
+// }
+
+
+const month =60;
+
+switch(month)
+{
+    case 1:
+        console.log("January");
+        break;
+    case 2:
+        console.log("February");
+        break;
+    case 3:
+        console.log("March");
+        break;
+    case 4:
+        console.log("April");
+        break;
+    case 5:
+        console.log("May");
+        break;
+    case 6:
+        console.log("June");
+        break;
+    default:
+        console.log("Invalid month");
+        break;
+
+
+}
